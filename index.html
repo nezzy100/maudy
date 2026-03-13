@@ -1,293 +1,202 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday! 🎂✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <title>Special for Maudy Cintya 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --deep-blue: #0f172a;
-            --neon-blue: #38bdf8;
-            --soft-blue: #7dd3fc;
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --soft-blue: #e0f2fe;
+            --flower-blue: #7dd3fc;
+            --deep-flower: #38bdf8;
+            --text-color: #475569;
+            --glass: rgba(255, 255, 255, 0.7);
         }
 
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 100%);
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            color: white;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; color: var(--text-color);
         }
 
-        /* Latar Belakang Bintang */
-        #stars-container {
+        /* Kelopak Bunga Berjatuhan */
+        .petal {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+            background: #cbd5e1; /* Warna kelopak bunga biru pucat */
+            border-radius: 150% 0 150% 0;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 1;
+            animation: falling 10s linear infinite;
         }
 
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: twinkle var(--duration) infinite ease-in-out;
+        @keyframes falling {
+            0% { transform: translateY(-10vh) rotate(0deg); left: var(--x); opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(360deg); left: calc(var(--x) + 100px); opacity: 0; }
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* Container Card */
+        /* Glass Card */
         .card {
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            text-align: center;
-            width: 90%;
-            max-width: 450px;
-            z-index: 10;
-            position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid white;
+            padding: 40px; border-radius: 30px;
+            width: 90%; max-width: 500px;
+            z-index: 10; text-align: center;
+            box-shadow: 0 15px 35px rgba(186, 230, 253, 0.5);
         }
 
         .screen { display: none; }
-        .active { display: block; animation: fadeIn 0.8s ease; }
+        .active { display: block; animation: softFade 0.8s ease; }
+        @keyframes softFade { from { opacity: 0; } to { opacity: 1; } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--deep-flower); margin-bottom: 15px; }
+        p { margin-bottom: 25px; line-height: 1.6; font-size: 15px; }
 
-        h1 { 
-            font-family: 'Dancing Script', cursive; 
-            font-size: 3rem; 
-            color: var(--neon-blue);
-            margin-bottom: 15px;
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
-        }
-
-        p { font-size: 1rem; margin-bottom: 30px; line-height: 1.6; opacity: 0.9; }
-
-        /* Tombol */
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            height: 60px;
-            position: relative;
-        }
-
+        /* Buttons */
+        .btn-container { display: flex; flex-direction: column; gap: 12px; }
+        .row-btn { display: flex; gap: 10px; justify-content: center; }
+        
         .btn {
-            padding: 12px 30px;
-            border-radius: 50px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 12px 25px; border-radius: 15px; border: none;
+            cursor: pointer; font-weight: 600; transition: 0.3s;
+            background: var(--deep-flower); color: white;
+            box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
+        }
+        .btn:hover { background: #0ea5e9; transform: translateY(-2px); }
+        
+        .btn-outline {
+            background: white; border: 1px solid var(--flower-blue); color: var(--deep-flower);
         }
 
-        .btn-main {
-            background: var(--neon-blue);
-            color: var(--deep-blue);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        #noBtn { position: absolute; }
+
+        /* Inputs */
+        input, textarea {
+            width: 100%; padding: 15px; border-radius: 15px;
+            border: 2px solid #e2e8f0; background: white;
+            color: var(--text-color); outline: none; margin-bottom: 15px;
+            transition: 0.3s;
         }
+        input:focus, textarea:focus { border-color: var(--flower-blue); }
+        textarea { height: 130px; resize: none; }
 
-        .btn-main:hover { transform: scale(1.1); background: var(--soft-blue); }
-
-        #noBtn {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid var(--glass-border);
-            position: absolute;
+        .summary-box { 
+            text-align: left; background: white; padding: 20px; 
+            border-radius: 20px; margin-top: 15px; 
+            border: 1px dashed var(--flower-blue);
         }
-
-        /* Input Styles */
-        input {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            outline: none;
-            text-align: center;
-        }
-
-        input::placeholder { color: rgba(255, 255, 255, 0.5); }
-
-        .summary-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 10px;
-            text-align: left;
-            border-left: 4px solid var(--neon-blue);
-        }
-
-        /* Confetti Canvas */
-        #confetti {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 100;
-        }
+        .summary-box b { color: var(--deep-flower); }
     </style>
 </head>
 <body>
 
-    <canvas id="confetti"></canvas>
-    <div id="stars-container"></div>
+    <div id="flower-field"></div>
 
     <div class="card">
         <div id="s1" class="screen active">
-            <div style="font-size: 50px; margin-bottom: 10px;">🎁</div>
-            <h1>Happy Birthday!</h1>
-            <p>Hari ini ada orang spesial yang ulang tahun... Itu kamu kan? <br>Mau rayain bareng aku?</p>
-            <div class="btn-group">
-                <button class="btn btn-main" onclick="nextScreen(2)">MAU BANGET! 💙</button>
-                <button class="btn" id="noBtn" onmouseover="runAway()">Nggak</button>
+            <div style="font-size: 45px; margin-bottom: 5px;">🌸</div>
+            <h1>Happy Birthday, Maudy Cintya</h1>
+            <p>Hari ini seindah bunga yang mekar. <br>Mau ngerayain sebentar sama aku?</p>
+            <div class="btn-container">
+                <button class="btn" onclick="next(2)">Tentu Saja 💙</button>
+                <button class="btn btn-outline" id="noBtn" onmouseover="run()">Nggak</button>
             </div>
         </div>
 
         <div id="s2" class="screen">
-            <h1>Make a Wish 🌠</h1>
+            <h1>Harapan ✨</h1>
             <p>Apa harapan terbesar kamu di umur baru ini?</p>
-            <input type="text" id="wishIn" placeholder="Tulis harapanmu di sini...">
-            <button class="btn btn-main" style="width: 100%;" onclick="save('wish', 3)">Lanjut</button>
+            <input type="text" id="wishIn" placeholder="Tulis harapanmu...">
+            <button class="btn" style="width: 100%" onclick="save('wish', 3)">Lanjut</button>
         </div>
 
         <div id="s3" class="screen">
-            <h1>Cake Time 🎂</h1>
-            <p>Mau kue rasa apa kalau kita ngerayain bareng nanti?</p>
-            <input type="text" id="cakeIn" placeholder="Cokelat, Matcha, Strawberry?">
-            <button class="btn btn-main" style="width: 100%;" onclick="save('cake', 4)">Lanjut</button>
+            <h1>Tahun Ini...</h1>
+            <p>Bagaimana kondisimu tahun ini?</p>
+            <div class="row-btn">
+                <button class="btn" onclick="directSave('kondisi', 'Baik', 4)">Baik 😊</button>
+                <button class="btn btn-outline" onclick="directSave('kondisi', 'Tidak Baik', 4)">Tidak Baik 🥺</button>
+            </div>
         </div>
 
         <div id="s4" class="screen">
-            <h1>A Special Gift 💙</h1>
-            <p>Terakhir, mau kado apa dari aku?</p>
-            <input type="text" id="giftIn" placeholder="Sebutin aja, siapa tau dikabulin...">
-            <button class="btn btn-main" style="width: 100%;" onclick="save('gift', 5); finalize()">Selesai</button>
+            <h1>Tentang Kado 🎁</h1>
+            <p>Apakah kamu suka kado dari aku?</p>
+            <div class="row-btn">
+                <button class="btn" onclick="directSave('kado', 'Suka', 5)">Suka! ❤️</button>
+                <button class="btn btn-outline" onclick="directSave('kado', 'Tidak Suka', 5)">Tidak Suka</button>
+            </div>
         </div>
 
         <div id="s5" class="screen">
-            <h1>HBD To You! ✨</h1>
-            <div id="summary"></div>
-            <p style="margin-top: 20px; font-weight: bold;">"Aku doain semua hal baik datang ke kamu tahun ini!"</p>
-            <button class="btn btn-main" onclick="window.print()">Simpan Kenangan</button>
+            <h1>Cerita Yuk.. 🌿</h1>
+            <p>Ceritakan apapun tentang tahun ini, yang belum bisa diceritain ke aku.</p>
+            <textarea id="storyIn" placeholder="Tumpahkan semuanya di sini..."></textarea>
+            <button class="btn" style="width: 100%" onclick="save('story', 6); finalize()">Kirim Jawaban</button>
+        </div>
+
+        <div id="s6" class="screen">
+            <h1>For You, Maudy 🌸</h1>
+            <div id="result" class="summary-box"></div>
+            <p style="margin-top: 20px;">Apapun ceritanya, aku senang kamu berbagi denganku. HBD!</p>
+            <button class="btn btn-outline" style="width: 100%" onclick="window.print()">Simpan Kenangan 📸</button>
         </div>
     </div>
 
     <script>
-        const store = { wish: '', cake: '', gift: '' };
+        const store = { wish: '', kondisi: '', kado: '', story: '' };
 
-        // 1. Create Stars Background
-        function createStars() {
-            const container = document.getElementById('stars-container');
-            for (let i = 0; i < 150; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                const size = Math.random() * 3 + 'px';
-                star.style.width = size;
-                star.style.height = size;
-                star.style.left = Math.random() * 100 + 'vw';
-                star.style.top = Math.random() * 100 + 'vh';
-                star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-                container.appendChild(star);
+        // 1. Petal Animation
+        function createPetals() {
+            const container = document.getElementById('flower-field');
+            for (let i = 0; i < 25; i++) {
+                const p = document.createElement('div');
+                p.className = 'petal';
+                p.style.width = p.style.height = Math.random() * 15 + 10 + 'px';
+                p.style.setProperty('--x', Math.random() * 100 + 'vw');
+                p.style.animationDuration = Math.random() * 5 + 5 + 's';
+                p.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(p);
             }
         }
-        createStars();
+        createPetals();
 
-        // 2. Evasive No Button
-        function runAway() {
-            const btn = document.getElementById('noBtn');
-            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
-            btn.style.zIndex = '1000';
-        }
-
-        // 3. Navigation
-        function nextScreen(n) {
+        function next(n) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('s' + n).classList.add('active');
-            if(n === 2) startConfetti();
+        }
+
+        function run() {
+            const b = document.getElementById('noBtn');
+            b.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            b.style.top = Math.random() * (window.innerHeight - 50) + 'px';
         }
 
         function save(key, n) {
             const val = document.getElementById(key + 'In').value;
-            store[key] = val || "Sesuatu yang indah";
-            nextScreen(n);
+            store[key] = val || "-";
+            next(n);
+        }
+
+        function directSave(key, val, n) {
+            store[key] = val;
+            next(n);
         }
 
         function finalize() {
-            const div = document.getElementById('summary');
-            div.innerHTML = `
-                <div class="summary-item"><b>Harapan:</b> ${store.wish}</div>
-                <div class="summary-item"><b>Rasa Kue:</b> ${store.cake}</div>
-                <div class="summary-item"><b>Kado:</b> ${store.gift}</div>
+            document.getElementById('result').innerHTML = `
+                <b>Harapan:</b> ${store.wish}<br>
+                <b>Kondisi:</b> ${store.kondisi}<br>
+                <b>Suka Kado:</b> ${store.kado}<br><br>
+                <b>Cerita Maudy:</b><br><span style="font-size:13px; color:#64748b;">${store.story}</span>
             `;
-        }
-
-        // 4. Simple Confetti Effect
-        function startConfetti() {
-            const canvas = document.getElementById('confetti');
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            let particles = [];
-            for (let i = 0; i < 100; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height - canvas.height,
-                    r: Math.random() * 6 + 2,
-                    d: Math.random() * 10,
-                    color: `hsl(${Math.random() * 200 + 180}, 70%, 60%)`,
-                    tilt: Math.random() * 10 - 10
-                });
-            }
-
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach((p, i) => {
-                    ctx.beginPath();
-                    ctx.lineWidth = p.r;
-                    ctx.strokeStyle = p.color;
-                    ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
-                    ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
-                    ctx.stroke();
-                    
-                    p.y += Math.cos(p.d) + 1 + p.r / 2;
-                    p.tilt = Math.sin(p.d) * 15;
-                    
-                    if (p.y > canvas.height) {
-                        particles[i] = { ...p, y: -20, x: Math.random() * canvas.width };
-                    }
-                });
-                requestAnimationFrame(draw);
-            }
-            draw();
         }
     </script>
 </body>
