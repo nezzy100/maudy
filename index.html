@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -12,7 +11,7 @@
             --flower-blue: #7dd3fc;
             --deep-flower: #38bdf8;
             --text-color: #475569;
-            --glass: rgba(255, 255, 255, 0.7);
+            --glass: rgba(255, 255, 255, 0.85);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -22,12 +21,25 @@
             height: 100vh;
             display: flex; justify-content: center; align-items: center;
             overflow: hidden; color: var(--text-color);
+            position: relative;
         }
 
-        /* Kelopak Bunga Berjatuhan */
+        /* Watermark Kris */
+        .watermark {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 12px;
+            color: var(--deep-flower);
+            font-weight: 600;
+            opacity: 0.7;
+            z-index: 100;
+        }
+
+        /* Petal Animation */
         .petal {
             position: absolute;
-            background: #cbd5e1; /* Warna kelopak bunga biru pucat */
+            background: #fff;
             border-radius: 150% 0 150% 0;
             opacity: 0.6;
             pointer-events: none;
@@ -41,52 +53,54 @@
             100% { transform: translateY(110vh) rotate(360deg); left: calc(var(--x) + 100px); opacity: 0; }
         }
 
-        /* Glass Card */
         .card {
             background: var(--glass);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 2px solid white;
-            padding: 40px; border-radius: 30px;
+            padding: 30px; border-radius: 30px;
             width: 90%; max-width: 500px;
             z-index: 10; text-align: center;
             box-shadow: 0 15px 35px rgba(186, 230, 253, 0.5);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        /* Styling untuk FOTO SKETSA */
+        .profile-img {
+            width: 150px; /* Ukuran disesuaikan agar proporsional */
+            height: auto;
+            margin: 0 auto 15px;
+            display: block;
+            object-fit: contain; /* Memastikan gambar hati tidak terpotong */
         }
 
         .screen { display: none; }
-        .active { display: block; animation: softFade 0.8s ease; }
+        .active { display: block; animation: softFade 0.6s ease; }
         @keyframes softFade { from { opacity: 0; } to { opacity: 1; } }
 
-        h1 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--deep-flower); margin-bottom: 15px; }
-        p { margin-bottom: 25px; line-height: 1.6; font-size: 15px; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--deep-flower); margin-bottom: 10px; }
+        p { margin-bottom: 20px; line-height: 1.5; font-size: 14px; }
 
-        /* Buttons */
-        .btn-container { display: flex; flex-direction: column; gap: 12px; }
-        .row-btn { display: flex; gap: 10px; justify-content: center; }
-        
         .btn {
-            padding: 12px 25px; border-radius: 15px; border: none;
+            padding: 10px 20px; border-radius: 12px; border: none;
             cursor: pointer; font-weight: 600; transition: 0.3s;
             background: var(--deep-flower); color: white;
-            box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
+            margin: 5px;
         }
-        .btn:hover { background: #0ea5e9; transform: translateY(-2px); }
-        
-        .btn-outline {
-            background: white; border: 1px solid var(--flower-blue); color: var(--deep-flower);
+        .btn:hover { background: #0ea5e9; transform: translateY(-1px); }
+        .btn-outline { background: white; border: 1px solid var(--flower-blue); color: var(--deep-flower); }
+
+        textarea, input {
+            width: 100%; padding: 12px; border-radius: 12px;
+            border: 1px solid #ddd; margin-bottom: 15px; outline: none;
         }
 
-        #noBtn { position: absolute; }
-
-        /* Inputs */
-        input, textarea {
-            width: 100%; padding: 15px; border-radius: 15px;
-            border: 2px solid #e2e8f0; background: white;
-            color: var(--text-color); outline: none; margin-bottom: 15px;
-            transition: 0.3s;
+        .long-text {
+            text-align: justify; font-size: 13px; line-height: 1.6;
+            background: rgba(255,255,255,0.5); padding: 15px;
+            border-radius: 15px; margin-bottom: 15px;
+            max-height: 250px; overflow-y: auto;
         }
-        input:focus, textarea:focus { border-color: var(--flower-blue); }
-        textarea { height: 130px; resize: none; }
 
         .summary-box { 
             text-align: left; background: white; padding: 20px; 
@@ -94,76 +108,90 @@
             border: 1px dashed var(--flower-blue);
         }
         .summary-box b { color: var(--deep-flower); }
+
+        #backMauBtn { position: absolute; }
     </style>
 </head>
 <body>
 
     <div id="flower-field"></div>
+    <div class="watermark">Made by Kris</div>
 
     <div class="card">
         <div id="s1" class="screen active">
-            <div style="font-size: 45px; margin-bottom: 5px;">🌸</div>
-            <h1>Happy Birthday, Maudy Cintya</h1>
+            <img src="foto-maudy.png" class="profile-img" alt="Sketsa Maudy Cintya">
+            
+            <h1>HBD, Maudy Cintya</h1>
             <p>Hari ini seindah bunga yang mekar. <br>Mau ngerayain sebentar sama aku?</p>
-            <div class="btn-container">
-                <button class="btn" onclick="next(2)">Tentu Saja 💙</button>
-                <button class="btn btn-outline" id="noBtn" onmouseover="run()">Nggak</button>
-            </div>
+            <button class="btn" onclick="next(2)">Tentu Saja 💙</button>
         </div>
 
         <div id="s2" class="screen">
             <h1>Harapan ✨</h1>
-            <p>Apa harapan terbesar kamu di umur baru ini?</p>
             <input type="text" id="wishIn" placeholder="Tulis harapanmu...">
-            <button class="btn" style="width: 100%" onclick="save('wish', 3)">Lanjut</button>
+            <button class="btn" onclick="save('wish', 3)">Lanjut</button>
         </div>
 
         <div id="s3" class="screen">
             <h1>Tahun Ini...</h1>
             <p>Bagaimana kondisimu tahun ini?</p>
-            <div class="row-btn">
-                <button class="btn" onclick="directSave('kondisi', 'Baik', 4)">Baik 😊</button>
-                <button class="btn btn-outline" onclick="directSave('kondisi', 'Tidak Baik', 4)">Tidak Baik 🥺</button>
-            </div>
+            <button class="btn" onclick="directSave('kondisi', 'Baik', 4)">Baik 😊</button>
+            <button class="btn btn-outline" onclick="directSave('kondisi', 'Tidak Baik', 4)">Tidak Baik 🥺</button>
         </div>
 
         <div id="s4" class="screen">
             <h1>Tentang Kado 🎁</h1>
             <p>Apakah kamu suka kado dari aku?</p>
-            <div class="row-btn">
-                <button class="btn" onclick="directSave('kado', 'Suka', 5)">Suka! ❤️</button>
-                <button class="btn btn-outline" onclick="directSave('kado', 'Tidak Suka', 5)">Tidak Suka</button>
-            </div>
+            <button class="btn" onclick="directSave('kado', 'Suka', 5)">Suka! ❤️</button>
+            <button class="btn btn-outline" onclick="directSave('kado', 'Tidak Suka', 5)">Tidak Suka</button>
         </div>
 
         <div id="s5" class="screen">
             <h1>Cerita Yuk.. 🌿</h1>
             <p>Ceritakan apapun tentang tahun ini, yang belum bisa diceritain ke aku.</p>
             <textarea id="storyIn" placeholder="Tumpahkan semuanya di sini..."></textarea>
-            <button class="btn" style="width: 100%" onclick="save('story', 6); finalize()">Kirim Jawaban</button>
+            <button class="btn" onclick="save('story', 6)">Kirim Jawaban</button>
         </div>
 
         <div id="s6" class="screen">
+            <h1>My Turn to Tell You 😜</h1>
+            <div class="long-text">
+                "You've told me, now it's my turn to tell you 😜 first of all I want to thank you for making me feel like I've fallen in love, maybe compared to my previous ex, you're like a special person. and also I apologize, because of me we fought and kept quiet, what I mean by blocking your WA if you already know is, because I know you already have a boyfriend or are close to a guy with the initials R. so I think I should stay away from you because you might be happy with him, I don't really want to bother you, so if I bother you again, I'm sorry. there are many things I can tell you when we're strangers, the stories in my brain are really piled up I don't know who I should tell. I'm really tired, really tired, 12th grade is really draining and I don't have a place for me to tell, now I know what I should tell, I apologize for not being able to So what do you want, maybe one day you will have your dream specs. Thank you so much for making me feel like a special person for you, celebrating my birthday, and giving me a gift, it was the happiest thing in my life, I was really happy. Especially when you told me about your effort to buy it, I really liked that. I also thank you for being willing to be a temporary home and staying with me even though it wasn't long, but I'm aware of that, my shortcomings that you might find difficult to accept make me accept it. I will change as time goes by. I'm proud of you because you can take care of your body, you can now eat as much as you want without having anyone bothering you anymore. If there are people who say you're weird, believe me they're just jealous of your beauty and all your advantages, you have so much more, in my eyes you only have advantages, there are no shortcomings at all, that's why I'm proud of you. I say this because, soon I'll graduate, maybe we won't be able to meet again or even make eye contact Again, I will be busy with my business and you will be busy with yours, maybe you will get a guy who suits your choice, sorry I can't be the best of the best. Thank you Maudy Cintya for the time you gave me, everything is precious to me, I will pray for you from afar."
+            </div>
+            <button class="btn" onclick="next(7)">Next ✨</button>
+        </div>
+
+        <div id="s7" class="screen">
+            <h1>Terakhir...</h1>
+            <p>Mau balikan?</p>
+            <div style="height: 100px; position: relative; margin-top: 20px;">
+                <button class="btn" id="backMauBtn" onmouseover="dodge()">Mau</button>
+                <button class="btn btn-outline" style="position: absolute; left: 50%; transform: translateX(-50%);" onclick="next(8)">Tidak</button>
+            </div>
+        </div>
+
+        <div id="s8" class="screen">
+            <img src="foto-maudy.png" class="profile-img" alt="Sketsa Maudy Cintya">
+
             <h1>For You, Maudy 🌸</h1>
             <div id="result" class="summary-box"></div>
-            <p style="margin-top: 20px;">Apapun ceritanya, aku senang kamu berbagi denganku. HBD!</p>
-            <button class="btn btn-outline" style="width: 100%" onclick="window.print()">Simpan Kenangan 📸</button>
+            <p style="margin-top: 20px;">Apapun ceritanya, aku senang kamu berbagi denganku. Sukses selalu ya!</p>
+            <button class="btn" onclick="window.print()">Simpan Kenangan 📸</button>
         </div>
     </div>
 
     <script>
         const store = { wish: '', kondisi: '', kado: '', story: '' };
 
-        // 1. Petal Animation
+        // Petal Animation
         function createPetals() {
             const container = document.getElementById('flower-field');
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 20; i++) {
                 const p = document.createElement('div');
                 p.className = 'petal';
                 p.style.width = p.style.height = Math.random() * 15 + 10 + 'px';
                 p.style.setProperty('--x', Math.random() * 100 + 'vw');
                 p.style.animationDuration = Math.random() * 5 + 5 + 's';
-                p.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(p);
             }
         }
@@ -174,21 +202,21 @@
             document.getElementById('s' + n).classList.add('active');
         }
 
-        function run() {
-            const b = document.getElementById('noBtn');
-            b.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-            b.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-        }
-
         function save(key, n) {
-            const val = document.getElementById(key + 'In').value;
-            store[key] = val || "-";
+            store[key] = document.getElementById(key + 'In').value;
+            if (n === 8) finalize();
             next(n);
         }
 
         function directSave(key, val, n) {
             store[key] = val;
             next(n);
+        }
+
+        function dodge() {
+            const btn = document.getElementById('backMauBtn');
+            btn.style.left = Math.random() * 80 + '%';
+            btn.style.top = Math.random() * 80 + '%';
         }
 
         function finalize() {
