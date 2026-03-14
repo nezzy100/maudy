@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -27,24 +26,15 @@
 
         /* Watermark Kris */
         .watermark {
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            font-size: 12px;
-            color: var(--deep-flower);
-            font-weight: 600;
-            opacity: 0.7;
-            z-index: 100;
+            position: absolute; bottom: 15px; right: 20px;
+            font-size: 12px; color: var(--deep-flower);
+            font-weight: 600; opacity: 0.7; z-index: 100;
         }
 
         /* Petal Animation */
         .petal {
-            position: absolute;
-            background: #fff;
-            border-radius: 150% 0 150% 0;
-            opacity: 0.6;
-            pointer-events: none;
-            z-index: 1;
+            position: absolute; background: #fff; border-radius: 150% 0 150% 0;
+            opacity: 0.6; pointer-events: none; z-index: 1;
             animation: falling 10s linear infinite;
         }
 
@@ -55,22 +45,17 @@
         }
 
         .card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 2px solid white;
-            padding: 30px; border-radius: 30px;
-            width: 90%; max-width: 500px;
-            z-index: 10; text-align: center;
+            background: var(--glass); backdrop-filter: blur(10px);
+            border: 2px solid white; padding: 30px; border-radius: 30px;
+            width: 90%; max-width: 500px; z-index: 10; text-align: center;
             box-shadow: 0 15px 35px rgba(186, 230, 253, 0.5);
-            max-height: 85vh;
-            overflow-y: auto;
+            max-height: 85vh; overflow-y: auto;
         }
 
+        /* Foto Sketsa Maudy */
         .profile-img {
-            width: 100px; height: 100px;
-            margin: 0 auto 15px; border-radius: 50%;
-            border: 3px solid white; object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 180px; height: auto; margin: 0 auto 15px;
+            display: block; object-fit: contain;
         }
 
         .screen { display: none; }
@@ -83,8 +68,7 @@
         .btn {
             padding: 10px 20px; border-radius: 12px; border: none;
             cursor: pointer; font-weight: 600; transition: 0.3s;
-            background: var(--deep-flower); color: white;
-            margin: 5px;
+            background: var(--deep-flower); color: white; margin: 5px;
         }
         .btn-outline { background: white; border: 1px solid var(--flower-blue); color: var(--deep-flower); }
 
@@ -92,15 +76,22 @@
             width: 100%; padding: 12px; border-radius: 12px;
             border: 1px solid #ddd; margin-bottom: 15px; outline: none;
         }
+        textarea { height: 120px; resize: none; }
 
         .long-text {
             text-align: justify; font-size: 13px; line-height: 1.6;
             background: rgba(255,255,255,0.5); padding: 15px;
             border-radius: 15px; margin-bottom: 15px;
-            max-height: 250px; overflow-y: auto;
+            max-height: 200px; overflow-y: auto; border: 1px solid #eee;
         }
 
-        #backMauBtn { position: absolute; }
+        .summary-box { 
+            text-align: left; background: white; padding: 20px; 
+            border-radius: 20px; margin-top: 15px; 
+            border: 1px dashed var(--flower-blue); font-size: 13px;
+        }
+        
+        #backMauBtn { position: absolute; transition: 0.1s; }
     </style>
 </head>
 <body>
@@ -110,7 +101,7 @@
 
     <div class="card">
         <div id="s1" class="screen active">
-            <img src="foto-maudy.jpg" class="profile-img" onerror="this.style.display='none'">
+            <img src="foto-maudy.png" class="profile-img" alt="Maudy" onerror="this.style.display='none'">
             <h1>HBD, Maudy Cintya</h1>
             <p>Hari ini seindah bunga yang mekar. <br>Mau ngerayain sebentar sama aku?</p>
             <button class="btn" onclick="next(2)">Tentu Saja 💙</button>
@@ -146,7 +137,7 @@
         <div id="s6" class="screen">
             <h1>My Turn to Tell You 😜</h1>
             <div class="long-text">
-                "You've told me, now it's my turn to tell you 😜 first of all I want to thank you for making me feel like I've fallen in love, maybe compared to my previous ex, you're like a special person. and also I apologize, because of me we fought and kept quiet, what I mean by blocking your WA if you already know is, because I know you already have a boyfriend or are close to a guy with the initials R. so I think I should stay away from you because you might be happy with him, I don't really want to bother you, so if I bother you again, I'm sorry. there are many things I can tell you when we're strangers, the stories in my brain are really piled up I don't know who I should tell. I'm really tired, really tired, 12th grade is really draining and I don't have a place for me to tell, now I know what I should tell, I apologize for not being able to So what do you want, maybe one day you will have your dream specs. Thank you so much for making me feel like a special person for you, celebrating my birthday, and giving me a gift, it was the happiest thing in my life, I was really happy. Especially when you told me about your effort to buy it, I really liked that. I also thank you for being willing to be a temporary home and staying with me even though it wasn't long, but I'm aware of that, my shortcomings that you might find difficult to accept make me accept it. I will change as time goes by. I'm proud of you because you can take care of your body, you can now eat as much as you want without having anyone bothering you anymore. If there are people who say you're weird, believe me they're just jealous of your beauty and all your advantages, you have so much more, in my eyes you only have advantages, there are no shortcomings at all, that's why I'm proud of you. I say this because, soon I'll graduate, maybe we won't be able to meet again or even make eye contact Again, I will be busy with my business and you will be busy with yours, maybe you will get a guy who suits your choice, sorry I can't be the best of the best. Thank you Maudy Cintya for the time you gave me, everything is precious to me, I will pray for you from afar."
+                "you've told me, now it's my turn to tell you 😜 first of all I want to thank you for making me feel like I've fallen in love, maybe compared to my previous ex, you're like a special person. and also I apologize, because of me we fought and kept quiet, what I mean by blocking your WA if you already know is, because I know you already have a boyfriend or are close to a guy with the initials R. so I think I should stay away from you because you might be happy with him, I don't really want to bother you, so if I bother you again, I'm sorry. there are many things I can tell you when we're strangers, the stories in my brain are really piled up I don't know who I should tell. I'm really tired, really tired, 12th grade is really draining and I don't have a place for me to tell, now I know what I should tell, I apologize for not being able to So what do you want, maybe one day you will have your dream specs. Thank you so much for making me feel like a special person for you, celebrating my birthday, and giving me a gift, it was the happiest thing in my life, I was really happy. Especially when you told me about your effort to buy it, I really liked that. I also thank you for being willing to be a temporary home and staying with me even though it wasn't long, but I'm aware of that, my shortcomings that you might find difficult to accept make me accept it. I will change as time goes by. I'm proud of you because you can take care of your body, you can now eat as much as you want without having anyone bothering you anymore. If there are people who say you're weird, believe me they're just jealous of your beauty and all your advantages, you have so much more, in my eyes you only have advantages, there are no shortcomings at all, that's why I'm proud of you. I say this because, soon I'll graduate, maybe we won't be able to meet again or even make eye contact Again, I will be busy with my business and you will be busy with yours, maybe you will get a guy who suits your choice, sorry I can't be the best of the best. Thank you Maudy Cintya for the time you gave me, everything is precious to me, I will pray for you from afar."
             </div>
             <button class="btn" onclick="next(7)">Next ✨</button>
         </div>
@@ -154,34 +145,30 @@
         <div id="s7" class="screen">
             <h1>Terakhir...</h1>
             <p>Mau balikan?</p>
-            <div style="height: 100px; position: relative; margin-top: 20px;">
+            <div style="height: 120px; position: relative; margin-top: 20px;">
                 <button class="btn" id="backMauBtn" onmouseover="dodge()">Mau</button>
-                <button class="btn btn-outline" style="position: absolute; left: 50%; transform: translateX(-50%);" onclick="next(8)">Tidak</button>
+                <button class="btn btn-outline" style="position: absolute; left: 50%; transform: translateX(-50%);" onclick="finalize()">Tidak</button>
             </div>
         </div>
 
         <div id="s8" class="screen">
-            <h1>Goodbye, Maudy 🌸</h1>
-            <p>Pilihanmu sudah tersimpan. Sukses selalu ya buat kamu.</p>
-            <button class="btn" onclick="window.print()">Simpan Kenangan</button>
+            <img src="foto-maudy.png" class="profile-img" alt="Maudy" onerror="this.style.display='none'">
+            <h1>For You, Maudy 🌸</h1>
+            <div class="summary-box">
+                <p><b>Harapan:</b> <span id="resWish"></span></p>
+                <p><b>Kondisi:</b> <span id="resKondisi"></span></p>
+                <p><b>Suka Kado:</b> <span id="resKado"></span></p>
+                <hr style="margin: 10px 0; border: 0; border-top: 1px dashed var(--flower-blue);">
+                <p><b>Ceritamu:</b></p>
+                <p id="resStory" style="font-style: italic; color: #64748b; white-space: pre-wrap;"></p>
+            </div>
+            <p style="margin-top: 20px; font-size: 12px;">"Semoga harimu selalu bahagia."</p>
+            <button class="btn" onclick="window.print()">Simpan Kenangan 📸</button>
         </div>
     </div>
 
     <script>
         const store = { wish: '', kondisi: '', kado: '', story: '' };
-
-        function createPetals() {
-            const container = document.getElementById('flower-field');
-            for (let i = 0; i < 20; i++) {
-                const p = document.createElement('div');
-                p.className = 'petal';
-                p.style.width = p.style.height = Math.random() * 15 + 10 + 'px';
-                p.style.setProperty('--x', Math.random() * 100 + 'vw');
-                p.style.animationDuration = Math.random() * 5 + 5 + 's';
-                container.appendChild(p);
-            }
-        }
-        createPetals();
 
         function next(n) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -189,7 +176,7 @@
         }
 
         function save(key, n) {
-            store[key] = document.getElementById(key + 'In').value;
+            store[key] = document.getElementById(key + 'In').value || "Tidak dijawab";
             next(n);
         }
 
@@ -200,9 +187,34 @@
 
         function dodge() {
             const btn = document.getElementById('backMauBtn');
-            btn.style.left = Math.random() * 80 + '%';
-            btn.style.top = Math.random() * 80 + '%';
+            const card = document.querySelector('.card');
+            // Menghindar dalam area card agar tetap terlihat tapi susah diklik
+            btn.style.left = Math.random() * 70 + '%';
+            btn.style.top = Math.random() * 70 + '%';
         }
+
+        function finalize() {
+            document.getElementById('resWish').innerText = store.wish;
+            document.getElementById('resKondisi').innerText = store.kondisi;
+            document.getElementById('resKado').innerText = store.kado;
+            document.getElementById('resStory').innerText = store.story;
+            next(8);
+        }
+
+        // Bunga berjatuhan
+        function createPetals() {
+            const container = document.getElementById('flower-field');
+            for (let i = 0; i < 25; i++) {
+                const p = document.createElement('div');
+                p.className = 'petal';
+                p.style.width = p.style.height = Math.random() * 15 + 10 + 'px';
+                p.style.setProperty('--x', Math.random() * 100 + 'vw');
+                p.style.animationDuration = Math.random() * 5 + 5 + 's';
+                p.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(p);
+            }
+        }
+        createPetals();
     </script>
 </body>
 </html>
